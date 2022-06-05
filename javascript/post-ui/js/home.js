@@ -71,7 +71,6 @@ function handleFilterChange(filterName, filterValue) {
   const url = new URL(window.location);
   url.searchParams.set(filterName, filterValue);
   history.pushState({}, '', url);
-
   // fetch API
 
   // Re-render post list
