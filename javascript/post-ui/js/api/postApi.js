@@ -7,6 +7,15 @@ const postsApi = {
     // viet gon lai thanh :(do bien params co ten giong voi tham so params)
     return axiosClient.get(url, { params });
 
+    //  params xem trong phan request config (axios page):  object or a URLSearchParams(location.search) object
+    //  tren URL params.
+    // vd : const params = {
+    //   _page: 1,
+    //   _limit: 6,
+    // };
+    // ==> return axiosClient.get(url, { params });
+    // => tren URL : https://postsm/posts?_page=1&_limit=6
+
     // co the tuy chinh cau hinh cho cac method :( Request Config) url, baseURL, header, transformRequest ...
     // vd : thay doi baseURL mac dinh :
     //  return axiosClient.get(url, { params, baseURL:'https://abc.com/' });
@@ -17,7 +26,7 @@ const postsApi = {
   },
   add(data) {
     const url = '/posts';
-    return axiosClient.posts(url, data);
+    return axiosClient.post(url, data);
   },
   update(data) {
     const url = `/posts/${data.id}`;
