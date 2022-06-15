@@ -20,62 +20,9 @@ async function handleFilterChange(filterName, filterValue) {
     const { data, pagination } = await postsApi.getAll(url.searchParams);
 
     renderPostList(data);
-    renderPagination(pagination);
+    renderPagination('pagination', pagination);
   } catch (error) {
-<<<<<<< HEAD
     console.log('failed to fetch post list', error);
-=======
-    console.log('failed to creat post item', error);
-  }
-}
-
-function renderPostList(postList) {
-  if (!Array.isArray(postList) || postList.length === 0) return;
-
-  const ulElement = document.getElementById('postsList');
-  if (!ulElement) return;
-
-  postList.forEach((post) => {
-    const liElement = createPostElement(post);
-    ulElement.appendChild(liElement);
-  });
-}
-
-// pagination
-
-function handleFilterChange(filterName, filterValue) {
-  const url = new URL(window.location);
-  url.searchParams.set(filterName, filterValue);
-  history.pushState({}, '', url);
-  // fetch API
-
-  // Re-render post list
-}
-
-function handlePrevClick(e) {
-  e.preventDefault();
-  console.log('prev');
-}
-
-function handleNextClick(e) {
-  e.preventDefault();
-  console.log('next');
-}
-
-function init() {
-  // bind click event for prev/next Button
-  const pagination = document.getElementById('pagination');
-  if (!pagination) return;
-
-  const prevButton = pagination.firstElementChild?.firstElementChild;
-  if (prevButton) {
-    prevButton.addEventListener('click', handlePrevClick);
-  }
-
-  const nextButton = pagination.lastElementChild?.firstElementChild;
-  if (nextButton) {
-    nextButton.addEventListener('click', handleNextClick);
->>>>>>> 662cf013e3e53a746eecf4649825c1f4201b07ee
   }
 }
 
@@ -104,7 +51,7 @@ function init() {
     // Render post list based URL params
     const { data, pagination } = await postsApi.getAll(queryParams);
     renderPostList(data);
-    renderPagination(pagination);
+    renderPagination('pagination', pagination);
   } catch (error) {
     console.log('get all failed', error);
   }
